@@ -35,7 +35,7 @@ export default function ClientLogos() {
         Vertraut von Branchenführern
       </motion.h3>
       <div className={cn(
-        "grid grid-cols-3 md:grid-cols-6 gap-4"
+        "grid grid-cols-3 md:grid-cols-6 gap-4 max-w-6xl mx-auto"
       )}>
         <Logo Icon={Code} delay={0.1} />
         <Logo Icon={Github} delay={0.2} />

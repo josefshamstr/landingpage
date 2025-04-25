@@ -14,41 +14,34 @@ export default function ImpressumPage() {
         <section className="space-y-6">
           <div>
             <h2 className="text-xl font-semibold mb-4">Angaben gemäß § 5 TMG</h2>
-            <p>Schnitzelbytes GmbH</p>
-            <p>Musterstraße 123</p>
-            <p>10115 Berlin</p>
-          </div>
-
-          <div>
-            <h2 className="text-xl font-semibold mb-4">Vertreten durch</h2>
-            <p>Max Mustermann</p>
-            <p>Geschäftsführer</p>
+            <p>Josef Haras</p>
+            <p>Rudolf-Simon-Gasse 5/26 123</p>
+            <p>1110 Wien</p>
           </div>
 
           <div>
             <h2 className="text-xl font-semibold mb-4">Kontakt</h2>
-            <p>Telefon: +49 (0) 30 123456789</p>
-            <p>E-Mail: info@schnitzelbytes.de</p>
+            <p>Telefon: +436805019637</p>
+            <p>E-Mail: office@@schnitzelbytes.io</p>
           </div>
 
           <div>
-            <h2 className="text-xl font-semibold mb-4">Registereintrag</h2>
-            <p>Eintragung im Handelsregister</p>
-            <p>Registergericht: Amtsgericht Berlin-Charlottenburg</p>
-            <p>Registernummer: HRB 123456</p>
+            <h2 className="text-xl font-semibold mb-4">Streitschlichtung</h2>
+            <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: https://ec.europa.eu/consumers/odr
+              <br />
+              Unsere E-Mail-Adresse finden Sie oben im Impressum.
+              <br />
+              Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+            </p>
           </div>
 
           <div>
-            <h2 className="text-xl font-semibold mb-4">Umsatzsteuer-ID</h2>
-            <p>Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:</p>
-            <p>DE 123456789</p>
-          </div>
-
-          <div>
-            <h2 className="text-xl font-semibold mb-4">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-            <p>Max Mustermann</p>
-            <p>Musterstraße 123</p>
-            <p>10115 Berlin</p>
+            <h2 className="text-xl font-semibold mb-4">Haftungsausschluss</h2>
+            <p>Haftung für Inhalte</p>
+            <p>
+              Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+              Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+            </p>
           </div>
         </section>
       </div>

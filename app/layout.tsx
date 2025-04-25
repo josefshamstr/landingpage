@@ -17,7 +17,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans`}>
         <Providers>
-          {children}
+          <div className="min-h-screen">
+            <main className="container px-4 md:px-6 max-w-7xl mx-auto">
+              {children}
+            </main>
+          </div>
         </Providers>
       </body>
     </html>

@@ -52,42 +52,40 @@ export default function StatsSection() {
 
   return (
     <section ref={ref} className="py-16 md:py-24">
-      <div className="container px-4 md:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {stats.map((stat, index) => {
-            const Icon = stat.icon;
-            return (
-              <motion.div
-                key={stat.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className="border border-border/50 bg-card/50 backdrop-blur-sm overflow-hidden">
-                  <CardContent className="p-6 flex flex-col items-center text-center">
-                    <div className={`p-3 rounded-full ${stat.bgColor} ${stat.color} mb-4`}>
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <div className="text-3xl md:text-4xl font-bold mb-2">
-                      <AnimatedCounter
-                        from={0}
-                        to={stat.value}
-                        formatter={(value) => `${formatNumber(value)}${stat.suffix}`}
-                      />
-                    </div>
-                    <p className="text-sm text-muted-foreground">{stat.label}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.5 }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto"
+      >
+        {stats.map((stat, index) => {
+          const Icon = stat.icon;
+          return (
+            <motion.div
+              key={stat.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <Card className="border border-border/50 bg-card/50 backdrop-blur-sm overflow-hidden">
+                <CardContent className="p-6 flex flex-col items-center text-center">
+                  <div className={`p-3 rounded-full ${stat.bgColor} ${stat.color} mb-4`}>
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <div className="text-3xl md:text-4xl font-bold mb-2">
+                    <AnimatedCounter
+                      from={0}
+                      to={stat.value}
+                      formatter={(value) => `${formatNumber(value)}${stat.suffix}`}
+                    />
+                  </div>
+                  <p className="text-sm text-muted-foreground">{stat.label}</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          );
+        })}
+      </motion.div>
     </section>
   );
 }

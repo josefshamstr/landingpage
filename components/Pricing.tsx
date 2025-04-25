@@ -55,7 +55,7 @@ const plans = [
 export default function Pricing() {
   return (
     <section className="py-16 md:py-24 relative overflow-hidden">
-      <div className="container px-4 md:px-6 relative">
+      <div className="relative">
         {/* Background Text */}
         <div className="absolute inset-0 flex items-start justify-center pointer-events-none">
           <h1 className="text-[20vw] font-bold text-foreground/[0.4] leading-none mt-[-20vh]">
@@ -64,7 +64,7 @@ export default function Pricing() {
         </div>
         
         {/* Cards Grid */}
-        <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8 mt-[30vh]">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8 mt-[30vh] max-w-6xl mx-auto">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}

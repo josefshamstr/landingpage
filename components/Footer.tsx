@@ -44,8 +44,8 @@ const socialLinks = [
 export default function Footer() {
   return (
     <footer className="border-t border-border">
-      <div className="container px-4 md:px-6 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+      <div className="py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
           <div className="lg:col-span-2">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -115,7 +115,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Schnitzelbytes. Alle Rechte vorbehalten.
           </p>
           <p className="text-sm text-muted-foreground mt-2 sm:mt-0">
-            Mit ❤️ entwickelt in Berlin
+            Mit ❤️ entwickelt in Wien 
           </p>
         </motion.div>
       </div>

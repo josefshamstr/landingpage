@@ -1,7 +1,7 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, Suspense } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Code, Palette, LineChart } from 'lucide-react';
 import FloatingElements from './FloatingElements';
@@ -12,36 +12,91 @@ const services = [
   { name: "Wachstumslösungen", icon: LineChart },
 ];
 
+const phrases = [
+  "Wir entwickeln digitale Erlebnisse die überzeugen",
+  "Wir entwickeln innovative Lösungen die begeistern",
+  "Wir entwickeln Zukunft die inspiriert"
+];
+
+// Statischer Content für SEO
+const StaticHero = () => (
+  <div className="sr-only">
+    <h1>Wir entwickeln digitale Erlebnisse die überzeugen</h1>
+    <p>Wir transformieren Unternehmen mit innovativen Weblösungen, die messbare Ergebnisse liefern.</p>
+  </div>
+);
+
+// Dynamischer Content für Animation
+const DynamicHero = () => {
+  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [text, setText] = useState("");
+  const [delta, setDelta] = useState(200);
+
+  useEffect(() => {
+    const currentPhrase = phrases[currentPhraseIndex];
+    let timeout: NodeJS.Timeout;
+
+    if (isDeleting) {
+      timeout = setTimeout(() => {
+        if (text === "Wir entwickeln") {
+          setIsDeleting(false);
+          setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
+        } else {
+          setText(currentPhrase.substring(0, text.length - 1));
+        }
+      }, 100);
+    } else {
+      timeout = setTimeout(() => {
+        if (text === currentPhrase) {
+          setTimeout(() => setIsDeleting(true), 2000);
+        } else {
+          setText(currentPhrase.substring(0, text.length + 1));
+        }
+      }, 200);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [text, isDeleting, currentPhraseIndex]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="max-w-xl md:max-w-3xl space-y-4"
+    >
+      <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+        {text.startsWith("Wir entwickeln") ? (
+          <>
+            Wir entwickeln{' '}
+            <span className="text-orange-500">
+              {text.slice("Wir entwickeln ".length)}
+            </span>
+          </>
+        ) : (
+          text
+        )}
+        <span className="inline-block w-[2px] h-[1em] bg-orange-500 ml-1 animate-blink" />
+      </h1>
+      <p className="text-xl md:text-2xl mt-4 text-muted-foreground">
+        Wir transformieren Unternehmen mit innovativen Weblösungen, die messbare Ergebnisse liefern.
+      </p>
+    </motion.div>
+  );
+};
+
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
       <FloatingElements />
       
-      <div className="container relative z-10 px-4 md:px-6 py-12 md:py-24">
-        <div className="flex flex-col items-center text-center space-y-8 md:space-y-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-xl md:max-w-3xl space-y-4"
-          >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-              Wir entwickeln{' '}
-              <span className="text-orange-500 inline-block relative">
-                digitale Erlebnisse
-                <motion.span
-                  className="absolute -bottom-2 left-0 w-full h-1 bg-orange-500 rounded-full"
-                  initial={{ width: 0 }}
-                  animate={{ width: '100%' }}
-                  transition={{ duration: 1, delay: 1 }}
-                />
-              </span>{' '}
-              die überzeugen
-            </h1>
-            <p className="text-xl md:text-2xl mt-4 text-muted-foreground">
-              Wir transformieren Unternehmen mit innovativen Weblösungen, die messbare Ergebnisse liefern.
-            </p>
-          </motion.div>
+      <div className="relative z-10 py-12 md:py-24">
+        <div className="flex flex-col items-center text-center space-y-12 md:space-y-16 mx-auto">
+          <StaticHero />
+          <Suspense fallback={<StaticHero />}>
+            <DynamicHero />
+          </Suspense>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
